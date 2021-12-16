@@ -1,0 +1,22 @@
+{% extends "padre.twig" %}
+{% block contenido %}
+ 
+<p> Listado de Cursos </p>
+
+<table border="1">
+
+{% for recorre_cursos in cursos %} 
+  <tr>
+  <form action="/mvc2/" method="POST">
+  <input type="hidden" id="id" name="id" value="{{ recorre_cursos['nombre_curso'] }}">
+   <td> {{ recorre_cursos['nombre_curso'] }}</td>
+   <td><input name="subject" type="submit" value="Alumnos Presentes"> </td>
+   </form>
+  </tr>
+ {% endfor %}
+ </table>
+  
+
+
+{%endblock%}
+ 

@@ -59,6 +59,13 @@ $mapa->post('formulario_inscripcion_store',
 		 '/sistema-de-asistencia-grupo-5/inscripcion_realizada',
 		 ['controller'=>'App\controllers\InscripcionController',
 		 'action'=>'storeForminscripcion']);
+
+//ruta de tipo get para el mostrar el formulario donde aparecen todos los cursos y la opción de ver los que asistieron
+$mapa->get('form_listado_de_cursos',
+		 '/sistema-de-asistencia-grupo-5/form_listado_cursos',
+		 ['controller'=>'App\controllers\ListadosController',
+		 'action'=>'getListarcurso']);
+
 //------Mach whit route-------------
 $matcher = $contenedorDeRutas->getMatcher();
 

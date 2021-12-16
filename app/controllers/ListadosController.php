@@ -3,23 +3,21 @@
 namespace App\controllers;
 use App\controllers\BaseController;
 use App\models\Alumno;
-use App\models\Curso;
-use App\models\Asiste;
+use App\models\Cursos;
+use App\models\Asistencia;
  
 
 class ListadosController extends BaseController {
 
 	public function getListarcurso($request)
-        {    $cursos=Curso::all();
-           // $alumnos=Alumno::all();
-           return $this->renderHTML('listado_cursos.twig' , ["cursos"=>$cursos]);
+        {    $cursos=Cursos::all();
+                      return $this->renderHTML('listado_cursos.twig' , ["cursos"=>$cursos]);
 
-    }
+        }
     public function getListaralumnos($request)
-        {   // $cursos=Curso::all();
+        {  
           $dato_post=$request -> GetParsedBody();//convierte los datos que recibe request
-         //a
-         //$nuevo_alumno=new Alumno();
+         
          $curso_seleccionado=$dato_post['id'];
          $alumnos=Alumno::all();
          //JOIN se utiliza para combinar dos o más tablas, tomando un campo común de las dos
@@ -30,27 +28,8 @@ class ListadosController extends BaseController {
          ->get();
 
          // https://parzibyte.me/blog/2020/02/10/join-laravel-union-tablas-sql/
-       
-    
-
-return $this->renderHTML('listado_asistentes.twig' , ["alumnos"=>$alumnos,"cs"=> $curso_seleccionado,"alu"=> $iden]);
-            //b
-         //$dato_post=$request -> GetParsedBody();//convierte los datos que recibe request
-         //a
-         //$nuevo_alumno=new Alumno();
-         //$curso_seleccionado=$dato_post['nombrec'];
-         //Consulto en la tabla asiste 
-        // $consulta=Asiste::where('nombre_curso','$curso_seleccionado')->get();
-         //return $this->renderHTML('listado_por_curso.twig',["listadoAsistente"=>$consulta,"curso_seleccionado"=>$curso_seleccionado]);
-         //Campo de la BD igual que el name del imput.
-         //Elocuente mapea y crea accesores de todos los campos
-         //Elocuent es el ODM que facilita guardr los datos
-         //El post se accede gracias al capturador de requels de la linea b)
-         //$nuevo_alumno->nombre=$dato_post['nombre'];
-         //$nuevo_alumno->save();
-         //$cursos=curso::all();
-         //$alumnos=Alumno::all();
-       // return $this->renderHTML('home.twig' , ["listadoAlumnos"=>$alumnos,"cursos"=>$cursos,]);
+       return $this->renderHTML('listado_cursos.twig' , ["alumnos"=>$alumnos,"cs"=> $curso_seleccionado,"alu"=> $iden]);
+           
     }
     public function getListartodosalumnos($request)
         {    $alumno=Alumno::all();
