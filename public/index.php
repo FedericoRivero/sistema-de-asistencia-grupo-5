@@ -44,19 +44,19 @@ $mapa = $contenedorDeRutas->getMap();
 
 $mapa->get(
 	'home',
-	'/sistema-de-asistencia-grupo-5/',
+	'/',
 	['controller'=>'App\controllers\HomeController','action'=>'getHome']
 );
 
 $mapa->get(
 	'formulario_inscripcion',
-	'/sistema-de-asistencia-grupo-5/inscripcion',
+	'/inscripcion',
 	['controller'=>'App\controllers\InscripcionController','action'=>'getForminscripcion']
 );
 
 //ruta de tipo post para el carga del formulario en la base de datos
 $mapa->post('formulario_inscripcion_store',
-		 '/sistema-de-asistencia-grupo-5/inscripcion_realizada',
+		 '/inscripcion_realizada',
 		 ['controller'=>'App\controllers\InscripcionController',
 		 'action'=>'storeForminscripcion']);
 //------Mach whit route-------------
