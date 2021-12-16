@@ -1,0 +1,30 @@
+{% extends "padre.twig" %}
+
+{% block contenido %}
+        <form action="/sistema-de-asistencia-grupo-5/inscripcion_realizada" method = "POST"> 
+        
+            <!-- <label for="nombre">Nombre:</label><br>
+            <input type="text" id="nombre" name="nombre"><br>
+
+            <label for="apellido">Apellido:</label><br>
+            <input type="text" id="apellido" name="apellido"><br>
+
+            <label for="telefono">Teléfono:</label><br>
+            <input type="tel" id="telefono" name="telefono"><br>    -->
+
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email"><br>
+            
+            <label for="nombre_curso">Seleccione curso:</label><br>
+            <select name="nombre_curso" id="nombre_curso">
+            {% for cursos in cursos %}
+                <option value= {{cursos['nombre_curso']}} >{{cursos['nombre_curso']}}</option>
+            {% endfor %}
+            </select>
+            <br><br>
+              
+            
+            <input type="submit" value="Enviar">
+
+        </form> 
+{% endblock %}
