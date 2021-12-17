@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="es">
+<!-- html comment -->
 
+
+<html>
 <head>
 	<meta charset="utf-8">
-
-	<title>Grupo Nº5 - Administrador</title>
-        {% block stylesheets %}
-        <link href="{{ asset('css/estilo_admin.css') }}" type="text/css" rel="stylesheet" />
-
-       {% endblock %}
+	<link rel="stylesheet" href="estilo_admin.css">
+	<title>Administrador</title>
 </head>
 <body>
 
@@ -16,7 +13,7 @@
 	<img src="img/logo00.jpg" alt="">
 	<nav>
 		<ul>
-			<li><a href="#home">Usuarios23</a></li>
+			<li><a href="#home">Usuarios</a></li>
 			<li><a href='/sistema-de-asistencia-grupo-5/inscripcion'>Inscripción</a></li>
 			<li><a href='/sistema-de-asistencia-grupo-5/listado_alumnos'> Alumnos registrados</a></li>
 			<li><a href='/sistema-de-asistencia-grupo-5/form_listado_cursos'>Alumnos por curso</a></li>
@@ -26,17 +23,17 @@
 </header>
 
 
+      
+      
+<section class="cajawall hero"  id= "home">
+	 
+	<div class="inicio-texto">
+		<h2>Bienvenido <span>Administrador </span><br><br> al Sistema de Asistencia</h2>
+	</div>
 
-<body>
+</section>
 
 
-    {% block contenido %}
-
-
-    {% endblock %}
-
-
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </body>
-
 </html>
+
