@@ -59,7 +59,6 @@ class ListadosController extends BaseController {
          $dato_post=$request -> GetParsedBody();//convierte los datos que recibe request
          
          $email=$dato_post['id'];
-         var_dump($email);
          $nuevo_nom=$dato_post['nombre'];
          $nuevo_apell=$dato_post['apellido'];
          $nuevo_email=$dato_post['nuevo_email'];
@@ -71,7 +70,7 @@ class ListadosController extends BaseController {
          $iden=Realiza::where('realiza.email', '=',$email)
          ->update(["realiza.email" => $nuevo_email]);
          
-         return $this->renderHTML('operacion_exitosa.twig');
+         return $this->renderHTML('operacion_exitosa.twig',["msj"=>"Datos de Alumno Modificados"]);
     }
     public function registrarasistencia($request)
     {  $dato_post=$request ->GetParsedBody();
@@ -85,11 +84,31 @@ class ListadosController extends BaseController {
         $registra_asistencia->estado=$dato_post['estado'];
         $registra_asistencia->save();
         
-        return $this->renderHTML('operacion_exitosa.twig');
+        return $this->renderHTML('operacion_exitosa.twig',["msj"=>"Asistencia registrada"]);
         
     }
-
     
-   }
+    public function getListarcursosasistencia($request)
+        {    $cursos=Cursos::all();
+                      return $this->renderHTML('listar_cursos_asistencia.twig' , ["cursos"=>$cursos]);
 
+        }
+        public function getListarasistencia($request)
+        {  
+          $dato_post=$request -> GetParsedBody();//convierte los datos que recibe request
+         
+         $curso_seleccionado=$dato_post['id'];
+         $alumnos=Alumno::all();
+         //JOIN se utiliza para combinar dos o más tablas, tomando un campo común de las dos
+         $iden=Alumno::join("asistencia", "asistencia.email", "=", "alumnos.email")
+         ->where("asistencia.nombre_curso", "=", $curso_seleccionado)
+         ->where("asistencia.estado", "=", "P")
+         ->select("alumnos.nombre", "alumnos.email","alumnos.apellido","asistencia.estado")
+         ->get();
+
+         // https://parzibyte.me/blog/2020/02/10/join-laravel-union-tablas-sql/
+       return $this->renderHTML('vista_asistencia.twig' , ["alumnos"=>$alumnos,"cs"=> $curso_seleccionado,"alu"=> $iden]);
+           
+    }
+}
 ?>
