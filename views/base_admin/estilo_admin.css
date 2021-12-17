@@ -1,0 +1,74 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body{
+	width: 100%;
+
+	font-family: Verdana, Geneva, sans-serif;
+}
+header{
+	width: 100%;
+	height: 100px;
+	background: #ebebeb;
+}
+header nav{
+	width: 90%;
+	height: 100%;
+	margin: auto;
+}
+
+header img {
+	height: 100px;
+	float: left;
+}
+
+header nav ul{
+	float: right;
+}
+header li{
+	list-style-type: none ;
+	display: inline;
+	margin: 0 5px;
+	line-height: 100px;
+}
+header li a {
+text-decoration: none;
+color: #c7133e;
+padding: 10px 12px;
+font-weight: bold;
+}
+
+header li a:hover{
+background-color: #c7133e;
+border-radius: 5px;
+color: white;
+}
+
+.cajawall{
+	width: 100%;
+	height: 520px;
+	background-size: cover;
+	background-repeat: 0;
+	
+	background-attachment: fixed; /*para que te siga*/
+
+}
+
+.hero{
+	background-position: bottom;/*center*/
+	background-image: url('img/central2.png') ;
+}
+
+
+.inicio-texto{
+  text-align: center;
+	padding: 25px 0;
+	color: #c7133e;
+}
+
+.inicio-texto span{
+	color: gold;
+}
+
