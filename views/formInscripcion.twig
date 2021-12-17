@@ -3,17 +3,13 @@
 {% block contenido %}
         <form action="/sistema-de-asistencia-grupo-5/inscripcion_realizada" method = "POST"> 
         
-            <!-- <label for="nombre">Nombre:</label><br>
-            <input type="text" id="nombre" name="nombre"><br>
-
-            <label for="apellido">Apellido:</label><br>
-            <input type="text" id="apellido" name="apellido"><br>
-
-            <label for="telefono">Teléfono:</label><br>
-            <input type="tel" id="telefono" name="telefono"><br>    -->
-
-            <label for="email">Email:</label><br>
+                        
+            <h3>Inscripcion Curso {{nombre_curso}}<br></h3>
+            <label for="email">Ingrese su mail de usuario:</label><br>
             <input type="email" id="email" name="email"><br>
+            <input type="hidden" name="nombre_curso" id="nombre_curso" value="{{nombre_curso}}">   
+
+            <!--<option value= {{nombre_curso}} >{{nombre_curso}}</option></select>
             
             <label for="nombre_curso">Seleccione curso:</label><br>
             <select name="nombre_curso" id="nombre_curso">
@@ -22,9 +18,7 @@
             {% endfor %}
             </select>
             <br><br>
-              
-            
-            <input type="submit" value="Enviar">
-
-        </form> 
+            -->
+            <br><br> <input name="subject" type="submit" value="Enviar"> 
+            </form> 
 {% endblock %}

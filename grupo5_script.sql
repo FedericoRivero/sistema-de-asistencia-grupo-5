@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-12-2021 a las 16:13:09
--- Versión del servidor: 10.1.39-MariaDB
--- Versión de PHP: 7.3.26
+-- Tiempo de generación: 17-12-2021 a las 04:38:13
+-- Versión del servidor: 10.4.21-MariaDB
+-- Versión de PHP: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,8 +42,8 @@ CREATE TABLE `alumnos` (
 --
 
 INSERT INTO `alumnos` (`email`, `created_at`, `updated_at`, `dni`, `nombre`, `apellido`, `telefono`) VALUES
-('alicialaura@gmail.com', '2021-12-16 20:10:34', '2021-12-17 06:59:49', '39123456', 'Alicia laura', 'Sepulveda C', '2645414456'),
-('fede@gmail.com', '2021-12-16 20:10:07', '2021-12-17 06:34:07', '39653545', 'Federico Gu', 'Rivero', '2645414545'),
+('ali@gmail.com', '2021-12-16 20:10:34', '2021-12-16 20:10:34', '39123456', 'Alicia', 'Sepulveda', '2645414456'),
+('fede@gmail.com', '2021-12-16 20:10:07', '2021-12-16 20:10:07', '39653545', 'Federico', 'Rivero', '2645414545'),
 ('fer@gmail.com', '2021-12-16 20:09:38', '2021-12-16 20:09:38', '39653421', 'Fernando', 'Icazatti', '2645414841');
 
 -- --------------------------------------------------------
@@ -58,16 +58,8 @@ CREATE TABLE `asistencia` (
   `updated_at` datetime NOT NULL,
   `nombre_curso` varchar(10) NOT NULL,
   `email` varchar(40) NOT NULL,
-  `estado` varchar(1) NOT NULL
+  `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `asistencia`
---
-
-INSERT INTO `asistencia` (`id_asistencia`, `created_at`, `updated_at`, `nombre_curso`, `email`, `estado`) VALUES
-(45, '2021-12-17 05:55:26', '2021-12-17 05:55:26', 'javascript', 'fede@gmail.com', 'P'),
-(46, '2021-12-17 07:01:10', '2021-12-17 07:01:10', 'javascript', 'fede@gmail.com', 'P');
 
 -- --------------------------------------------------------
 
@@ -98,6 +90,26 @@ INSERT INTO `cursos` (`nombre_curso`, `created_at`, `updated_at`, `inicio`, `fin
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `login`
+--
+
+CREATE TABLE `login` (
+  `usuario` varchar(10) NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `created_at` datetime NOT NULL,
+  `contraseña` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `login`
+--
+
+INSERT INTO `login` (`usuario`, `updated_at`, `created_at`, `contraseña`) VALUES
+('admin', '2021-12-17 00:33:58', '2021-12-17 00:33:58', 'admin');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `realiza`
 --
 
@@ -108,14 +120,6 @@ CREATE TABLE `realiza` (
   `nombre_curso` varchar(10) NOT NULL,
   `email` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `realiza`
---
-
-INSERT INTO `realiza` (`id_asistencia`, `created_at`, `updated_at`, `nombre_curso`, `email`) VALUES
-(1, '2021-12-20 00:48:16', '2021-12-17 06:59:49', 'javascript', 'alicialaura@gmail.com'),
-(3, '2021-12-22 01:20:58', '2021-12-24 01:20:58', 'javascript', 'fede@gmail.com');
 
 --
 -- Índices para tablas volcadas
@@ -142,6 +146,12 @@ ALTER TABLE `cursos`
   ADD PRIMARY KEY (`nombre_curso`);
 
 --
+-- Indices de la tabla `login`
+--
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`usuario`);
+
+--
 -- Indices de la tabla `realiza`
 --
 ALTER TABLE `realiza`
@@ -157,13 +167,13 @@ ALTER TABLE `realiza`
 -- AUTO_INCREMENT de la tabla `asistencia`
 --
 ALTER TABLE `asistencia`
-  MODIFY `id_asistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id_asistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `realiza`
 --
 ALTER TABLE `realiza`
-  MODIFY `id_asistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_asistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
