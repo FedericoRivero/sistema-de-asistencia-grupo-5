@@ -58,17 +58,62 @@ color: white;
 
 .hero{
 	background-position: bottom;/*center*/
-	background-image: url('public/assets/img/central2.png') ;
+	background-image: url('.../assets/img/central2.png') ;
 }
 
 
+.cajawall2{
+	width: 100%;
+	
+	background-size: cover;
+	background-repeat: 0;
+	text-align: center;
+	padding: 15px 0;
+	
+
+}
 .inicio-texto{
   text-align: center;
-	padding: 25px 0;
+	
 	color: #c7133e;
 }
 
 .inicio-texto span{
 	color: gold;
 }
+.tablaCurso{
+	border: 2px solid #c7133e;
+	margin: auto;	
+	width: 50%;
+	
+}
 
+tr{
+	padding: 10px 0;
+}
+
+td{
+	border: 1px solid black;
+	font-weight: bold;
+}
+.cajawall2 h2{
+	padding: 25px 0;
+}
+.botonTabla{
+	text-decoration: none;
+color: #c7133e;
+padding: 10px 12px;
+font-weight: bold;
+border: 0;
+}
+
+.botonTabla:hover{
+	background-color: #c7133e;
+	border-radius: 5px;
+	color: white;
+	}
+.paraTH{
+	background-color: lightgrey;
+	font-weight: bold;
+	font-size: 15px;
+	}

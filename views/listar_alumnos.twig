@@ -1,24 +1,27 @@
 {% extends "padre.twig" %}
 {% block contenido %}
 
-  <h1>Listado General de alumnos </h1>
- 
-
-   
-<table border="1">
-<th> Nombre y Apellido</th>
-<th>Email</th>
-<th>Opciones</th>
+  <h2>Listado General de alumnos </h2>
+    
+<table class="tablaCurso">
+<th></th>
+<th  class="paraTH"> Nombre y Apellido</th>
+<th  class="paraTH">Email</th>
+<th class="paraTH">Opciones</th>
+{% set cantidad = 1 %}
 {% for asistentes in alumnos %} 
   <tr>
+  <td>{{ cantidad }}</td>
   <form action="/sistema-de-asistencia-grupo-5/"  method="POST">
    <input type="hidden" id="id" name="id" value="{{ asistentes['email'] }}">
    <td>{{ asistentes['apellido'] }} {{ asistentes['nombre'] }} </td>
    <td> {{ asistentes['email'] }}</td>
-   <td><input name="subject" type="submit" value="Editar"> <input name="subject" type="submit" value="Eliminar"> </td>
+   <td><input name="subject" type="submit" value="Editar" class="botonTabla"> 
+   <input name="subject" type="submit" value="Eliminar" class="botonTabla"> </td>
    
    </form>
   </tr>
+  {% set cantidad = cantidad + 1 %}
  {% endfor %}
  </table>
 
