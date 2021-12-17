@@ -1,7 +1,7 @@
 {% extends "padre.twig" %}
 
 {%block stylesheet %}
-<link rel="stylesheet" type="text/css" href="public/css/style_login.css">
+<!--<link rel="stylesheet" type="text/css" href="public/css/style_login.css">-->
     {%endblock%}
 
     {% block titulo %}
@@ -15,7 +15,7 @@
 <section class="formulario">   
 
 
-    <h3>IniciarSesion</h3>
+    <h2>Iniciar Sesion</h2>
       
     
 
@@ -23,24 +23,24 @@
     <h5 class="m1">{{mensaje1}}</h5>
 
         <form action="/sistema-de-asistencia-grupo-5/login" method="POST">       
-
+        <div class = "claselogin" >
           
               <p>
                 <label class="colocar_nombre">Usuario
                   
                 </label>
-                  <input type="text" name="texto_usuario" id="usuario" placeholder="Ingresa tu usuario">
+                  <input class="inputEditar" type="text" name="texto_usuario" id="usuario" placeholder="Ingresa tu usuario">
               </p>
             
               <p>
                 <label class="contraseña">Contraseña
                   
                 </label>
-                  <input type="password" name="texto_contraseña" id="contraseña" placeholder="Ingresa tu contraseña">
+                  <input class="inputEditar" type="password" name="texto_contraseña" id="contraseña" placeholder="Ingresa tu contraseña">
               </p>                 
             
-              <button type="submit" name="registrarse" id="enviar"><p>Ingresar</p></button>
-
+              <button name="subject" type="submit" name="registrarse" id="enviar" class="botonTabla"><p>Ingresar</p></button>
+        </div>
               
         </form>
   </div>  

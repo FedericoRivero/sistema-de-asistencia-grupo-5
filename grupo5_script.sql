@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-12-2021 a las 04:38:13
+-- Tiempo de generación: 18-12-2021 a las 00:52:01
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.11
 
@@ -42,9 +42,7 @@ CREATE TABLE `alumnos` (
 --
 
 INSERT INTO `alumnos` (`email`, `created_at`, `updated_at`, `dni`, `nombre`, `apellido`, `telefono`) VALUES
-('ali@gmail.com', '2021-12-16 20:10:34', '2021-12-16 20:10:34', '39123456', 'Alicia', 'Sepulveda', '2645414456'),
-('fede@gmail.com', '2021-12-16 20:10:07', '2021-12-16 20:10:07', '39653545', 'Federico', 'Rivero', '2645414545'),
-('fer@gmail.com', '2021-12-16 20:09:38', '2021-12-16 20:09:38', '39653421', 'Fernando', 'Icazatti', '2645414841');
+('fernandoicaztti@gmail.com', '2021-12-18 00:44:47', '2021-12-18 00:44:47', '39653421', 'Fernando', 'Icazatti', '2645414841');
 
 -- --------------------------------------------------------
 
@@ -58,7 +56,7 @@ CREATE TABLE `asistencia` (
   `updated_at` datetime NOT NULL,
   `nombre_curso` varchar(10) NOT NULL,
   `email` varchar(40) NOT NULL,
-  `estado` tinyint(1) NOT NULL
+  `estado` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -86,26 +84,6 @@ INSERT INTO `cursos` (`nombre_curso`, `created_at`, `updated_at`, `inicio`, `fin
 ('php', '2021-12-15 04:24:42', '2021-12-15 04:24:42', '2021-12-08', '2021-12-22'),
 ('python', '2021-12-15 16:48:13', '2021-12-15 16:48:13', '2021-01-01', '2021-12-31'),
 ('sql', '2021-12-15 16:48:13', '2021-12-15 16:48:13', '2021-01-01', '2021-12-31');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `login`
---
-
-CREATE TABLE `login` (
-  `usuario` varchar(10) NOT NULL,
-  `updated_at` datetime NOT NULL,
-  `created_at` datetime NOT NULL,
-  `contraseña` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `login`
---
-
-INSERT INTO `login` (`usuario`, `updated_at`, `created_at`, `contraseña`) VALUES
-('admin', '2021-12-17 00:33:58', '2021-12-17 00:33:58', 'admin');
 
 -- --------------------------------------------------------
 
@@ -146,18 +124,13 @@ ALTER TABLE `cursos`
   ADD PRIMARY KEY (`nombre_curso`);
 
 --
--- Indices de la tabla `login`
---
-ALTER TABLE `login`
-  ADD PRIMARY KEY (`usuario`);
-
---
 -- Indices de la tabla `realiza`
 --
 ALTER TABLE `realiza`
   ADD PRIMARY KEY (`id_asistencia`),
   ADD KEY `nombre_curso` (`nombre_curso`,`email`),
-  ADD KEY `email` (`email`);
+  ADD KEY `email` (`email`),
+  ADD KEY `email_2` (`email`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -167,13 +140,13 @@ ALTER TABLE `realiza`
 -- AUTO_INCREMENT de la tabla `asistencia`
 --
 ALTER TABLE `asistencia`
-  MODIFY `id_asistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_asistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `realiza`
 --
 ALTER TABLE `realiza`
-  MODIFY `id_asistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_asistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Restricciones para tablas volcadas
@@ -185,6 +158,13 @@ ALTER TABLE `realiza`
 ALTER TABLE `asistencia`
   ADD CONSTRAINT `asistencia_ibfk_1` FOREIGN KEY (`email`) REFERENCES `alumnos` (`email`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `asistencia_ibfk_2` FOREIGN KEY (`nombre_curso`) REFERENCES `cursos` (`nombre_curso`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `realiza`
+--
+ALTER TABLE `realiza`
+  ADD CONSTRAINT `realiza_ibfk_1` FOREIGN KEY (`nombre_curso`) REFERENCES `cursos` (`nombre_curso`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `realiza_ibfk_2` FOREIGN KEY (`email`) REFERENCES `alumnos` (`email`) ON DELETE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

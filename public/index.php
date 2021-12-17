@@ -49,6 +49,18 @@ $mapa->get(
 );
 
 $mapa->get(
+	'nosotros',
+	'/sistema-de-asistencia-grupo-5/nosotros',
+	['controller'=>'App\controllers\HomeController','action'=>'getNosotros']
+);
+
+$mapa->get(
+	'admin',
+	'/sistema-de-asistencia-grupo-5/admin',
+	['controller'=>'App\controllers\HomeController','action'=>'getHomeAdmin']
+);
+
+$mapa->get(
 	'formulario_inscripcion',
 	'/sistema-de-asistencia-grupo-5/inscripcion',
 	['controller'=>'App\controllers\InscripcionController','action'=>'getForminscripcion']
@@ -83,7 +95,7 @@ $mapa->post('formulario_registro_store',
 		 '/sistema-de-asistencia-grupo-5/registro_realizado',
 		 ['controller'=>'App\controllers\InscripcionController',
 		 'action'=>'storeFormregistro']);
-		 
+
  $mapa->get('form_listado_de_cursos_para_asistencia',
 		 '/sistema-de-asistencia-grupo-5/asistencia',
 		 ['controller'=>'App\controllers\ListadosController',

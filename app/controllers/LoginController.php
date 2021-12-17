@@ -32,7 +32,7 @@ class LoginController extends BaseController {
         if ($key->usuario == $dato_post["texto_usuario"] && $key->contraseña == $dato_post["texto_contraseña"]){
 
             $texto = "Bienvenido ";
-            return $this->renderHTML('sesion.twig' , ['texto'=>$texto, 'usuario' => $key->usuario]);
+            return $this->renderHTML('home_admin.twig' , ['texto'=>$texto, 'usuario' => $key->usuario]);
             
         }else
 

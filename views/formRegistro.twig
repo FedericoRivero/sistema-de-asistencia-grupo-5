@@ -1,24 +1,25 @@
 {% extends "padre.twig" %}
 
 {% block contenido %}
+        <h2> Formulario de registro en el sistema </h2>
         <form action="/sistema-de-asistencia-grupo-5/registro_realizado" method = "POST"> 
+        <table class="tablaCurso">
+        <tr><td><label for="nombre">Nombre:</label></td>
+        <td><input class="inputEditar"  type="text" id="nombre" name="nombre"></td></tr>
+
+        <tr><td><label for="apellido">Apellido:</label></td>
+        <td><input class="inputEditar" type="text" id="apellido" name="apellido"></td></tr>                            
+
+        <tr><td><label for="email">Email:</label></td>
+        <td><input class="inputEditar"  type="email" id="email" name="email"></td></tr>                            
+
+        <tr><td><label for="dni">DNI:</label></td>
+        <td><input class="inputEditar"  type="text" id="dni" name="dni"></td></tr>                              
+                       
+        <tr><td><label for="telefono">Teléfono:</label></td>
+        <td><input class="inputEditar" type="tel" id="telefono" name="telefono"></td></tr>                              
         
-            <label for="nombre">Nombre:</label><br>
-            <input type="text" id="nombre" name="nombre"><br>
-
-            <label for="apellido">Apellido:</label><br>
-            <input type="text" id="apellido" name="apellido"><br>
-
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email"><br>
-            
-            <label for="dni">DNI:</label><br>
-            <input type="text" id="dni" name="dni"><br>
-            
-            <label for="telefono">Teléfono:</label><br>
-            <input type="tel" id="telefono" name="telefono"><br>                           
-            
-            <input name="subject" type="submit" value="Enviar">
-
+        <tr><td class="inputEditar"  colspan="2"><input name="subject" type="submit" value="Enviar" class = "botonTabla"></td></tr>
+        </table>
         </form> 
 {% endblock %}
