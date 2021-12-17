@@ -103,7 +103,7 @@ $route = $matcher->match($request);
 //------Mach whit route-------------
 
 if (!$route) {
-	echo 'no encuentro esa ruta';
+	require '../views/404.html';
 } else {
 
 	$capturadorDeDatos = $route->handler;
