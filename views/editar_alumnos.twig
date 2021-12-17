@@ -1,29 +1,30 @@
 {% extends "padre.twig" %}
 {% block contenido %}
- 
+ <h2>Editar Datos Alumnos </h2>
  <form action="/sistema-de-asistencia-grupo-5/" method="POST">
-<table border="1">
-<th> Datos del Alumno</th>
+<table class="tablaCurso">
+<th colspan="2"> Datos del Alumno</th>
 
 {% for asistentes in listadoAlumnos %} 
   <tr>
    <input type="hidden" id="id" name="id" value="{{ asistentes['email'] }}">
-   <td>Nombre:<input type="text" name="nombre" value="{{ asistentes['nombre'] }}"></td>
-    
+
+   <td>Nombre:</td>
+    <td><input type="text" name="nombre" value="{{ asistentes['nombre'] }}"></td>
   </tr>
   <tr>
-    <td> Apellido: <input type="text"  name="apellido" value="{{ asistentes['apellido'] }}"></td>
-        
+    <td> Apellido: </td>
+     <td><input type="text"  name="apellido" value="{{ asistentes['apellido'] }}"></td>   
   </tr>
   <tr>
-    <td> Email: <input type="text" name="nuevo_email" value="{{ asistentes['email'] }}"></td>
-       
+    <td> Email: </td>
+       <td><input type="text" name="nuevo_email" value="{{ asistentes['email'] }}"></td>
   
   </tr>
    {% endfor %}
    <tr>
     
-       <td> <input type="submit" id="subject" name="subject" value="Modificar"> </td>
+       <td colspan="2"> <input type="submit" id="subject" name="subject" value="Modificar" class="botonTabla"> </td>
   
   </tr>
   
