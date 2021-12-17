@@ -1,0 +1,25 @@
+{% extends "padre.twig" %}
+{% block contenido %}
+<h2>Listado de ASISTENCIA al curso "{{cs}}"</h2>
+
+ 
+<table  class="tablaCurso">
+<th>  </th>
+<th class="paraTH"> Nombre y Apellido</th>
+<th class="paraTH">Asistencia</th>
+{% set cantidad = 1 %}
+{% for asistentes in alu %} 
+  <tr>
+   <td>{{ cantidad }}</td>
+   <td>  {{ asistentes['apellido'] }}, {{ asistentes['nombre'] }} </td>
+   <td>  {{ asistentes['estado'] }} </td>
+
+  </tr>
+   {% set cantidad = cantidad + 1 %}
+   {% endfor %}
+  </table>
+  </form>
+
+
+{%endblock%}
+ 

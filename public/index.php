@@ -83,6 +83,11 @@ $mapa->post('formulario_registro_store',
 		 '/sistema-de-asistencia-grupo-5/registro_realizado',
 		 ['controller'=>'App\controllers\InscripcionController',
 		 'action'=>'storeFormregistro']);
+		 
+ $mapa->get('form_listado_de_cursos_para_asistencia',
+		 '/sistema-de-asistencia-grupo-5/asistencia',
+		 ['controller'=>'App\controllers\ListadosController',
+		 'action'=>'getListarcursosasistencia']);
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST")
@@ -91,6 +96,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	{
 //ruta de tipo post para el mostrar los alumnos presentes en un curso
 $mapa->post('listar alumnos','/sistema-de-asistencia-grupo-5/', ['controller'=>'App\controllers\ListadosController','action'=>'getListaralumnos']);
+	}
+	if ($name=="Listado de Asistencia") 
+	{
+//ruta de tipo post para el mostrar los alumnos presentes en un curso
+$mapa->post('listar alumnos para asistencia','/sistema-de-asistencia-grupo-5/', ['controller'=>'App\controllers\ListadosController','action'=>'getListarasistencia']);
 	}
  
    if ($name=="Registrar Asistencia") 
