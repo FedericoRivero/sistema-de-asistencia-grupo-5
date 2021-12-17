@@ -1,0 +1,26 @@
+{% extends "padre.twig" %}
+{% block contenido %}
+
+  <h1>Listado General de alumnos </h1>
+ 
+
+   
+<table border="1">
+<th> Nombre y Apellido</th>
+<th>Email</th>
+<th>Opciones</th>
+{% for asistentes in alumnos %} 
+  <tr>
+  <form action="/sistema-de-asistencia-grupo-5/"  method="POST">
+   <input type="hidden" id="id" name="id" value="{{ asistentes['email'] }}">
+   <td>{{ asistentes['apellido'] }} {{ asistentes['nombre'] }} </td>
+   <td> {{ asistentes['email'] }}</td>
+   <td><input name="subject" type="submit" value="Editar"> <input name="subject" type="submit" value="Eliminar"> </td>
+   
+   </form>
+  </tr>
+ {% endfor %}
+ </table>
+
+{%endblock%}
+ 

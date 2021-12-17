@@ -1,0 +1,28 @@
+{% extends "padre.twig" %}
+{% block contenido %}
+<h1>Listado de alumnos Inscriptos del curso "{{cs}}"</h1>
+ <form  action="/sistema-de-asistencia-grupo-5/" method="POST">
+<table border="1">
+<th> Nombre y Apellido</th>
+<th>Estado</th>
+<th>Opciones</th>
+<input type="hidden" id="nombre_curso" name="nombre_curso" value="{{ cs}}">
+
+{% for asistentes in alu %} 
+  <tr>
+   
+   <td> {{ asistentes['nombre'] }}</td>
+   <td> <input type="radio" name="estado" value="P">Presente
+   <input type="radio" name="estado" value="A">Ausente</td>
+<input type="hidden" id="email" name="email" value="{{ asistentes['email'] }}">
+
+     <td> <input type="submit" id="subject" name="subject" value="Registrar Asistencia"> </td>
+   </form>
+  </tr>
+   {% endfor %}
+  </table>
+  </form>
+
+
+{%endblock%}
+ 

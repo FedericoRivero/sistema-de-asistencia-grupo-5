@@ -66,6 +66,36 @@ $mapa->get('form_listado_de_cursos',
 		 ['controller'=>'App\controllers\ListadosController',
 		 'action'=>'getListarcurso']);
 
+
+if ($_SERVER["REQUEST_METHOD"] == "POST")
+ {		$name = $_POST['subject']; 
+	if ($name=="Alumnos Inscriptos") 
+	{
+//ruta de tipo post para el mostrar los alumnos presentes en un curso
+$mapa->post('listar alumnos','/sistema-de-asistencia-grupo-5/', ['controller'=>'App\controllers\ListadosController','action'=>'getListaralumnos']);
+	}
+ 
+   if ($name=="Registrar Asistencia") 
+   {
+//ruta de tipo post para registrar la asistencia
+$mapa->post('registrar asistencia','/sistema-de-asistencia-grupo-5/', ['controller'=>'App\controllers\ListadosController','action'=>'registrarasistencia']);
+   }
+
+   if ($name=="Editar") {
+	$mapa->post('editar alumnos','/sistema-de-asistencia-grupo-5/', ['controller'=>'App\controllers\ListadosController','action'=>'editaralumnos']);
+
+}
+if ($name=="Modificar") {
+	$mapa->post('modifica alumnos','/sistema-de-asistencia-grupo-5/', ['controller'=>'App\controllers\ListadosController','action'=>'modificaralumnos']);
+
+}
+
+}
+
+//ruta de tipo gets para listar todos los alumnos
+$mapa->get('listar todos alumnos',
+'/sistema-de-asistencia-grupo-5/listado_alumnos',
+ ['controller'=>'App\controllers\ListadosController','action'=>'getListartodosalumnos']);
 //------Mach whit route-------------
 $matcher = $contenedorDeRutas->getMatcher();
 
