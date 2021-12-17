@@ -2,21 +2,22 @@
 <html lang="es">
 
 <head>
-	<meta charset="utf-8">
+    <title>Grupo Nº5</title>
+    <meta charset="utf-8">
+    {# <link rel="stylesheet" href="Framework/bootstrap/css/bootstrap.min.css"> #}
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="public/css/styls.css"> -->
+    <link rel="stylesheet" href="public/css/estilo_admin.css">
 
-	<title>Grupo Nº5 - Administrador</title>
-        {% block stylesheets %}
-        <link href="{{ asset('css/estilo_admin.css') }}" type="text/css" rel="stylesheet" />
-
-       {% endblock %}
 </head>
 <body>
 
 <header>
-	<img src="img/logo00.jpg" alt="">
+	<img src="public/assets/img/logo00.jpg" alt="">
 	<nav>
 		<ul>
-			<li><a href="#home">Usuarios23</a></li>
+			<li><a href="#home">Cursos</a></li>
 			<li><a href='/sistema-de-asistencia-grupo-5/inscripcion'>Inscripción</a></li>
 			<li><a href='/sistema-de-asistencia-grupo-5/listado_alumnos'> Alumnos registrados</a></li>
 			<li><a href='/sistema-de-asistencia-grupo-5/form_listado_cursos'>Alumnos por curso</a></li>
@@ -25,18 +26,13 @@
 	</nav>
 </header>
 
-
-
 <body>
-
 
     {% block contenido %}
 
 
     {% endblock %}
 
-
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </body>
 
 </html>

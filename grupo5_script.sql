@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-12-2021 a las 01:11:36
+-- Tiempo de generación: 16-12-2021 a las 20:11:26
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.11
 
@@ -42,8 +42,9 @@ CREATE TABLE `alumnos` (
 --
 
 INSERT INTO `alumnos` (`email`, `created_at`, `updated_at`, `dni`, `nombre`, `apellido`, `telefono`) VALUES
-('fede@gmail.com', '2021-12-16 00:49:09', '2021-12-16 00:49:09', '40123456', 'federico', 'rivero', '2644155619'),
-('fernandoicaztti@gmail.com', '2021-12-15 18:38:25', '2021-12-15 18:38:25', '34745800', 'Pinin', 'Farina', '2644155619');
+('ali@gmail.com', '2021-12-16 20:10:34', '2021-12-16 20:10:34', '39123456', 'Alicia', 'Sepulveda', '2645414456'),
+('fede@gmail.com', '2021-12-16 20:10:07', '2021-12-16 20:10:07', '39653545', 'Federico', 'Rivero', '2645414545'),
+('fer@gmail.com', '2021-12-16 20:09:38', '2021-12-16 20:09:38', '39653421', 'Fernando', 'Icazatti', '2645414841');
 
 -- --------------------------------------------------------
 
@@ -60,13 +61,6 @@ CREATE TABLE `asistencia` (
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `asistencia`
---
-
-INSERT INTO `asistencia` (`id_asistencia`, `created_at`, `updated_at`, `nombre_curso`, `email`, `estado`) VALUES
-(20, '2021-12-16 00:54:11', '2021-12-16 00:54:11', 'C++', 'fede@gmail.com', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -74,7 +68,7 @@ INSERT INTO `asistencia` (`id_asistencia`, `created_at`, `updated_at`, `nombre_c
 --
 
 CREATE TABLE `cursos` (
-  `nombre_curso` varchar(10) NOT NULL,
+  `nombre_curso` varchar(20) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `inicio` date NOT NULL,
@@ -86,13 +80,26 @@ CREATE TABLE `cursos` (
 --
 
 INSERT INTO `cursos` (`nombre_curso`, `created_at`, `updated_at`, `inicio`, `final`) VALUES
-('C++', '2021-12-16 00:53:07', '2021-12-16 00:53:07', '2021-01-01', '2021-12-22'),
 ('css', '2021-12-15 16:48:13', '2021-12-15 16:48:13', '2021-01-01', '2021-12-31'),
 ('html', '2021-12-15 16:48:13', '2021-12-15 16:48:13', '2021-01-01', '2021-12-31'),
 ('javascript', '2021-12-15 16:48:13', '2021-12-15 16:48:13', '2021-01-01', '2021-12-31'),
 ('php', '2021-12-15 04:24:42', '2021-12-15 04:24:42', '2021-12-08', '2021-12-22'),
 ('python', '2021-12-15 16:48:13', '2021-12-15 16:48:13', '2021-01-01', '2021-12-31'),
 ('sql', '2021-12-15 16:48:13', '2021-12-15 16:48:13', '2021-01-01', '2021-12-31');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `realiza`
+--
+
+CREATE TABLE `realiza` (
+  `id_asistencia` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `nombre_curso` varchar(10) NOT NULL,
+  `email` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Índices para tablas volcadas
@@ -119,6 +126,14 @@ ALTER TABLE `cursos`
   ADD PRIMARY KEY (`nombre_curso`);
 
 --
+-- Indices de la tabla `realiza`
+--
+ALTER TABLE `realiza`
+  ADD PRIMARY KEY (`id_asistencia`),
+  ADD KEY `nombre_curso` (`nombre_curso`,`email`),
+  ADD KEY `email` (`email`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -126,7 +141,13 @@ ALTER TABLE `cursos`
 -- AUTO_INCREMENT de la tabla `asistencia`
 --
 ALTER TABLE `asistencia`
-  MODIFY `id_asistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_asistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT de la tabla `realiza`
+--
+ALTER TABLE `realiza`
+  MODIFY `id_asistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
@@ -143,3 +164,6 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
