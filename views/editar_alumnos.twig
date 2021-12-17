@@ -9,16 +9,16 @@
   <tr>
    <input type="hidden" id="id" name="id" value="{{ asistentes['email'] }}">
 
-   <td>Nombre:</td>
-    <td><input type="text" name="nombre" value="{{ asistentes['nombre'] }}"></td>
+   <td>Nombres:</td>
+    <td><input class="inputEditar"  type="text" name="nombre" value="{{ asistentes['nombre'] }}" ></td>
   </tr>
   <tr>
     <td> Apellido: </td>
-     <td><input type="text"  name="apellido" value="{{ asistentes['apellido'] }}"></td>   
+     <td><input class="inputEditar" type="text"  name="apellido" value="{{ asistentes['apellido'] }}"></td>   
   </tr>
   <tr>
     <td> Email: </td>
-       <td><input type="text" name="nuevo_email" value="{{ asistentes['email'] }}"></td>
+       <td><input class="inputEditar"  type="text" name="nuevo_email" value="{{ asistentes['email'] }}"></td>
   
   </tr>
    {% endfor %}
