@@ -9,8 +9,15 @@ style="background-image: url('public/assets/img/central2.png');">
 	 
 
 	<div class="inicio-texto">
-		<h2>Bienvenido <span>Administrador </span><br><br> al Sistema de Asistencia</h2>
+		<h2>Bienvenido a<span> San Juan TEC</span><br><br></h2>
 	</div>
+
+	{% for skills in listSkills %}
+   		<h3><ol>
+    		<a href= '/sistema-de-asistencia-grupo-5/inscripcion?nombre_curso={{skills['nombre_curso']}}'> 
+    		{{skills['nombre_curso']}} </a><br> 
+  		</h3></ol>
+	{% endfor %}
 
 </section>
  

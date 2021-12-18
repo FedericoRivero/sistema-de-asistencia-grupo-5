@@ -49,6 +49,18 @@ $mapa->get(
 );
 
 $mapa->get(
+	'nosotros',
+	'/sistema-de-asistencia-grupo-5/nosotros',
+	['controller'=>'App\controllers\HomeController','action'=>'getNosotros']
+);
+
+$mapa->get(
+	'admin',
+	'/sistema-de-asistencia-grupo-5/admin',
+	['controller'=>'App\controllers\HomeController','action'=>'getHomeAdmin']
+);
+
+$mapa->get(
 	'formulario_inscripcion',
 	'/sistema-de-asistencia-grupo-5/inscripcion',
 	['controller'=>'App\controllers\InscripcionController','action'=>'getForminscripcion']
@@ -65,6 +77,24 @@ $mapa->get('form_listado_de_cursos',
 		 '/sistema-de-asistencia-grupo-5/form_listado_cursos',
 		 ['controller'=>'App\controllers\ListadosController',
 		 'action'=>'getListarcurso']);
+
+$mapa->get(
+		'formulario_registro',
+		'/sistema-de-asistencia-grupo-5/registro',
+		['controller'=>'App\controllers\InscripcionController','action'=>'getFormregistro']);
+		
+//ruta para login de administradores//
+$mapa->get(
+	'login',
+	'/sistema-de-asistencia-grupo-5/login',
+	['controller'=>'App\controllers\LoginController','action'=>'getSesion']
+);
+
+//ruta de tipo post para el carga del formulario en la base de datos
+$mapa->post('formulario_registro_store',
+		 '/sistema-de-asistencia-grupo-5/registro_realizado',
+		 ['controller'=>'App\controllers\InscripcionController',
+		 'action'=>'storeFormregistro']);
 
  $mapa->get('form_listado_de_cursos_para_asistencia',
 		 '/sistema-de-asistencia-grupo-5/asistencia',
@@ -87,25 +117,38 @@ $mapa->post('listar alumnos para asistencia','/sistema-de-asistencia-grupo-5/', 
  
    if ($name=="Registrar Asistencia") 
    {
-//ruta de tipo post para registrar la asistencia
-$mapa->post('registrar asistencia','/sistema-de-asistencia-grupo-5/', ['controller'=>'App\controllers\ListadosController','action'=>'registrarasistencia']);
+		//ruta de tipo post para registrar la asistencia
+		$mapa->post('registrar asistencia','/sistema-de-asistencia-grupo-5/', 
+		['controller'=>'App\controllers\ListadosController','action'=>'registrarasistencia']);
    }
 
-   if ($name=="Editar") {
-	$mapa->post('editar alumnos','/sistema-de-asistencia-grupo-5/', ['controller'=>'App\controllers\ListadosController','action'=>'editaralumnos']);
+	if ($name=="Editar") 
+	{
+		$mapa->post('editar alumnos',
+		'/sistema-de-asistencia-grupo-5/',
+		['controller'=>'App\controllers\ListadosController','action'=>'editaralumnos']);
+	}
 
-}
-if ($name=="Modificar") {
-	$mapa->post('modifica alumnos','/sistema-de-asistencia-grupo-5/', ['controller'=>'App\controllers\ListadosController','action'=>'modificaralumnos']);
+	if ($name=="Modificar") 	
+	{
+		$mapa->post('modifica alumnos','/sistema-de-asistencia-grupo-5/', 
+		['controller'=>'App\controllers\ListadosController','action'=>'modificaralumnos']);
 
-}
+	}
+
+//Verificar login administrador
+$mapa->post(
+	'verificar',
+	'/sistema-de-asistencia-grupo-5/login',
+	['controller'=>'App\controllers\LoginController','action'=>'verificar']);
 
 }
 
 //ruta de tipo gets para listar todos los alumnos
 $mapa->get('listar todos alumnos',
-'/sistema-de-asistencia-grupo-5/listado_alumnos',
- ['controller'=>'App\controllers\ListadosController','action'=>'getListartodosalumnos']);
+	'/sistema-de-asistencia-grupo-5/listado_alumnos',
+ 	['controller'=>'App\controllers\ListadosController','action'=>'getListartodosalumnos']);
+	
 //------Mach whit route-------------
 $matcher = $contenedorDeRutas->getMatcher();
 

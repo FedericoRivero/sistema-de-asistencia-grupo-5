@@ -127,3 +127,21 @@ border: 0;
 		font-size: 14px;
 		 
 	}
+	.inputlogin{
+		background-color: #fbfbfb; 
+		width: 200px; 
+		height: 30px; 
+		border-radius: 5px;  
+		border-style: solid; 
+		border-width: 1px; 
+		border-color: #ab4493; 
+		margin-top: 10px;  
+		padding-left: 10px;
+		margin-bottom: 5px; 
+	  }
+
+	  .claselogin
+	  {
+		  width: 300px;
+		  margin:auto;
+    	}

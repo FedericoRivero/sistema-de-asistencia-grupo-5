@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-12-2021 a las 16:13:09
--- Versión del servidor: 10.1.39-MariaDB
--- Versión de PHP: 7.3.26
+-- Tiempo de generación: 18-12-2021 a las 00:52:01
+-- Versión del servidor: 10.4.21-MariaDB
+-- Versión de PHP: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,9 +42,7 @@ CREATE TABLE `alumnos` (
 --
 
 INSERT INTO `alumnos` (`email`, `created_at`, `updated_at`, `dni`, `nombre`, `apellido`, `telefono`) VALUES
-('alicialaura@gmail.com', '2021-12-16 20:10:34', '2021-12-17 06:59:49', '39123456', 'Alicia laura', 'Sepulveda C', '2645414456'),
-('fede@gmail.com', '2021-12-16 20:10:07', '2021-12-17 06:34:07', '39653545', 'Federico Gu', 'Rivero', '2645414545'),
-('fer@gmail.com', '2021-12-16 20:09:38', '2021-12-16 20:09:38', '39653421', 'Fernando', 'Icazatti', '2645414841');
+('fernandoicaztti@gmail.com', '2021-12-18 00:44:47', '2021-12-18 00:44:47', '39653421', 'Fernando', 'Icazatti', '2645414841');
 
 -- --------------------------------------------------------
 
@@ -60,14 +58,6 @@ CREATE TABLE `asistencia` (
   `email` varchar(40) NOT NULL,
   `estado` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `asistencia`
---
-
-INSERT INTO `asistencia` (`id_asistencia`, `created_at`, `updated_at`, `nombre_curso`, `email`, `estado`) VALUES
-(45, '2021-12-17 05:55:26', '2021-12-17 05:55:26', 'javascript', 'fede@gmail.com', 'P'),
-(46, '2021-12-17 07:01:10', '2021-12-17 07:01:10', 'javascript', 'fede@gmail.com', 'P');
 
 -- --------------------------------------------------------
 
@@ -110,14 +100,6 @@ CREATE TABLE `realiza` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `realiza`
---
-
-INSERT INTO `realiza` (`id_asistencia`, `created_at`, `updated_at`, `nombre_curso`, `email`) VALUES
-(1, '2021-12-20 00:48:16', '2021-12-17 06:59:49', 'javascript', 'alicialaura@gmail.com'),
-(3, '2021-12-22 01:20:58', '2021-12-24 01:20:58', 'javascript', 'fede@gmail.com');
-
---
 -- Índices para tablas volcadas
 --
 
@@ -147,7 +129,8 @@ ALTER TABLE `cursos`
 ALTER TABLE `realiza`
   ADD PRIMARY KEY (`id_asistencia`),
   ADD KEY `nombre_curso` (`nombre_curso`,`email`),
-  ADD KEY `email` (`email`);
+  ADD KEY `email` (`email`),
+  ADD KEY `email_2` (`email`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -157,13 +140,13 @@ ALTER TABLE `realiza`
 -- AUTO_INCREMENT de la tabla `asistencia`
 --
 ALTER TABLE `asistencia`
-  MODIFY `id_asistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id_asistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `realiza`
 --
 ALTER TABLE `realiza`
-  MODIFY `id_asistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_asistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Restricciones para tablas volcadas
@@ -175,6 +158,13 @@ ALTER TABLE `realiza`
 ALTER TABLE `asistencia`
   ADD CONSTRAINT `asistencia_ibfk_1` FOREIGN KEY (`email`) REFERENCES `alumnos` (`email`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `asistencia_ibfk_2` FOREIGN KEY (`nombre_curso`) REFERENCES `cursos` (`nombre_curso`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `realiza`
+--
+ALTER TABLE `realiza`
+  ADD CONSTRAINT `realiza_ibfk_1` FOREIGN KEY (`nombre_curso`) REFERENCES `cursos` (`nombre_curso`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `realiza_ibfk_2` FOREIGN KEY (`email`) REFERENCES `alumnos` (`email`) ON DELETE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
