@@ -1,7 +1,39 @@
 {% extends "padre.twig" %}
 
 {% block contenido %}
-	{% for nosotros in nosotros %}
-        {{nosotros}}
+
+
+{# <h2>El mundo TECH te espera</h2> #}
+
+<h2>Trabajo Final - Equipo 5</h2>
+
+{# <div class="lottie">
+    <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_1bdm0t0m.json" background="transparent" speed="1"
+        style="width: 480px; height: 480px;" loop autoplay></lottie-player>
+</div> #}
+
+
+<h2>Integrantes:</h2>
+
+<div class="nosotros hoja">
+
+    {% for nosotros in nosotros %}
+    <ul>
+        <h3>{{nosotros}}</h3>
+    </ul><br>
     {% endfor %}
+
+    <h2>Profesores:</h2>
+
+    <h3>
+        Fundamentos Bases de Datos: Cristina Vega<br><br>
+        Desarrollo de Backend con PHP: Marcos Caballero<br><br>
+        Desarrollo web: Georgina Navarro<br><br>
+    </h3>
+
+</div>
+
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+
 {% endblock %}

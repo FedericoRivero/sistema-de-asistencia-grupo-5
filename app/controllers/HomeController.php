@@ -35,7 +35,10 @@ class HomeController extends BaseController {
 
     public function getNosotros()
     {
-        $nosotros = array('PHP','LARAVEL','MYSQL','HTML','CSS','JAVASCRIPT');
+        $nosotros = array(
+            'María Eugenia Fernandez', 'Lorena Luna', 'Paola Perafán', 'Noel Montis Reus', 'Emmanuel Duart', 'Marcelo Aballay', 'Fernando Icazatti', 'Federico Rivero', 
+            'Alicia Sepúlveda', 'Marcela Chacon', 'Ana Vega', 'Mária Martinez', 'Emmanuel Vega', 'Fiorella Riccobelli', 'Erica Montaña'
+        );
         return $this -> renderHTML('nosotros.twig', ['nosotros' => $nosotros]);
     }
 
