@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-12-2021 a las 00:52:01
+-- Tiempo de generación: 18-12-2021 a las 01:28:59
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.11
 
@@ -98,6 +98,18 @@ CREATE TABLE `realiza` (
   `nombre_curso` varchar(10) NOT NULL,
   `email` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE `login` (
+  `usuario` varchar(10) NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `created_at` datetime NOT NULL,
+  `contraseña` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+INSERT INTO `login` (`usuario`, `updated_at`, `created_at`, `contraseña`) VALUES
+('admin', '2021-12-17 00:33:58', '2021-12-17 00:33:58', 'admin')
 
 --
 -- Índices para tablas volcadas
